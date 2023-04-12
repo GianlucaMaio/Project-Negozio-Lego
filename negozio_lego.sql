@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 12, 2023 alle 14:02
+-- Creato il: Apr 12, 2023 alle 17:46
 -- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.1.12
+-- Versione PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `amministratore`
+--
+
+CREATE TABLE `amministratore` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `amministratore`
+--
+
+INSERT INTO `amministratore` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin'),
+(2, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `catalogo`
 --
 
@@ -31,10 +51,22 @@ CREATE TABLE `catalogo` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `descrizione` varchar(255) NOT NULL,
-  `categoria` varchar(100) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
   `immagine` longtext NOT NULL,
   `prezzo` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `id` int(11) NOT NULL,
+  `descrizione` varchar(255) NOT NULL,
+  `id_catalogo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -66,10 +98,6 @@ CREATE TABLE `ordini` (
   `id` int(11) NOT NULL,
   `data` date NOT NULL,
   `importo` double NOT NULL,
-  `indirizzo` varchar(255) NOT NULL,
-  `cap` varchar(5) NOT NULL,
-  `localita` varchar(50) NOT NULL,
-  `provincia` varchar(2) NOT NULL,
   `id_cliente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,9 +129,21 @@ CREATE TABLE `profili` (
 --
 
 --
+-- Indici per le tabelle `amministratore`
+--
+ALTER TABLE `amministratore`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `catalogo`
 --
 ALTER TABLE `catalogo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `categorie`
+--
+ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -137,9 +177,21 @@ ALTER TABLE `profili`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `amministratore`
+--
+ALTER TABLE `amministratore`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT per la tabella `catalogo`
 --
 ALTER TABLE `catalogo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `categorie`
+--
+ALTER TABLE `categorie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
