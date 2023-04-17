@@ -1,0 +1,101 @@
+body {
+    padding-top: 170px;
+    background-color: rgb(41, 80, 255);
+  }
+  
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.price {
+    font-weight: bold;
+}
+
+.navColor {
+    background-color: red;
+}
+
+.footer {
+    background-color: rgb(255, 255, 0);
+}
+
+.navbar {
+    height: 130px;
+  }
+
+.logo {
+    height: 120px;
+    width: auto;
+}
+
+.foto1 {
+    padding-top: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.foto2 {
+    width: 75%;
+    margin: auto;
+}
+
+.foto3 {
+    width: 75%;
+    margin: auto;
+}
+
+.foto5 {
+    width: 53%;
+    margin: auto;
+}
+
+.foto6 {
+    width: 95%;
+    margin: auto;
+}
+
+.foto7 {
+    padding-top: 20px;
+    padding-right: 70px;
+    width: 120%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.foto8 {
+    padding-top: 20px;
+    width: 100%;
+    margin: auto;
+}
+
+.cart {
+    height: 120px;
+    width: auto;
+    text-align: right;
+}
+
+.nav-item {
+    margin: 5px;
+    margin-top: 40px;
+    height: 50%;
+    padding: 3px;
+    border-top: 8px dashed black;
+    border-bottom: 4px solid black;
+    border-right: 4px solid black;
+    border-left: 4px solid black;
+    background-color: yellow;
+    color: rgb(225, 57, 57);
+  }
+
+  .btn-primary {
+    background-color: red;
+  }
+
+  .nav-l {
+    font-size: 20px;
+    color: blue;
+  }
+
+  

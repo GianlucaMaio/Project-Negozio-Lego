@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import it.corso.dao.OrdineDao;
 import it.corso.model.Catalogo;
 import it.corso.model.Cliente;
 import it.corso.model.Ordine;
 
-
+@Service
 public class OrdineServiceImp implements OrdineService {
 
 	@Autowired

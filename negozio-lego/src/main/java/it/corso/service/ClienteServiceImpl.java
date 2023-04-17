@@ -3,11 +3,13 @@ package it.corso.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.corso.dao.ClienteDao;
 import it.corso.model.Cliente;
 import jakarta.servlet.http.HttpSession;
 
+@Service
 public class ClienteServiceImpl implements ClienteService {
 	
 	@Autowired
@@ -40,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
 		
-		Cliente cliente = clienteDao.findByUsernameAndPassword(username, password);
+		Cliente cliente = clienteDao.findByProfiloUsernameAndProfiloPassword(username, password);
 		
 		//controllo login 
 		if(cliente != null) {

@@ -1,12 +1,14 @@
 package it.corso.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.corso.dao.AmministratoreDao;
 import it.corso.model.Amministratore;
 
 import jakarta.servlet.http.HttpSession;
 
+@Service
 public class AmministatoreServiceImpl implements AmministratoreService {
 
 	@Autowired
