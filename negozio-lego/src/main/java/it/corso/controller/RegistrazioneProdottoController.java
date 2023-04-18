@@ -16,9 +16,9 @@ import it.corso.model.Categoria;
 import it.corso.service.CatalogoService;
 import it.corso.service.CategoriaService;
 
-//localhost:8051/registraprodotto
+//localhost:8051/gestioneprodotto
 @Controller
-@RequestMapping("/registraprodotto")
+@RequestMapping("/gestioneprodotto")
 public class RegistrazioneProdottoController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class RegistrazioneProdottoController {
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("categorie", categorie);
 		
-		return "registraprodotto";
+		return "gestioneprodotto";
 	}
 	
 	@PostMapping("salvaprodotto")
@@ -52,7 +52,7 @@ public class RegistrazioneProdottoController {
             ) 
 	{
 		catalogoService.registraProdotto(nome, descrizione, immagine, prezzo, idCategoria);
-        return	"redirect:/registraprodotto";
+        return	"redirect:/gestioneprodotto";
 	}
 
 	@GetMapping("/cancellaprodotto")
@@ -60,7 +60,7 @@ public class RegistrazioneProdottoController {
 	{
 		Catalogo catalogo = catalogoService.getProdottoById(id);
 		catalogoService.cancellaProdotto(catalogo);
-		return "redirect:/registraprodotto";
+		return "redirect:/gestioneprodotto";
 	}
 			
 

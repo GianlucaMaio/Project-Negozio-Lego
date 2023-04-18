@@ -49,7 +49,7 @@ public class Cliente {
 	@OneToMany
 	(
 		mappedBy = "cliente", 
-		cascade = CascadeType.ALL,
+		cascade = CascadeType.REFRESH,
 		fetch = FetchType.EAGER,
 		orphanRemoval = true 
 	)

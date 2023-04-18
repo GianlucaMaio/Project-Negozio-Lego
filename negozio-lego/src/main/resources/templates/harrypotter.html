@@ -1,168 +1,90 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title th:text="'Acquista i nostri prodotti'"></title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link  th:href="@{css./harrypotter.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Acquista i nostri prodotti'"></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/harrypotter.css">
+  <script>
+    function mostraDescrizione(button) {
+  var descrizione = button.parentNode.querySelector('.descrizione');
+  if (descrizione.style.display === 'none') {
+    descrizione.style.display = 'block';
+    button.textContent = 'Nascondi';
+  } else {
+    descrizione.style.display = 'none';
+    button.textContent = 'Dettagli';
+  }
+}
+  </script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light navColor fixed-top">
-    <a class="navbar-brand" href="home_page.html">
-      <img src="logo.png" class="logo" alt="">
-    </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">  
-        <li class="nav-i">
-          <a class="nav-link2" href="#">
-            <img src="cart.png" class="cart">
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-l" href="#" th:text="'login'"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-l" href="#" th:text="'Registrazione'"></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light1 fixed-top">
+        <a href="#">
+        <img class="logo" src="image/logo.png" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="catalogo-lego">
+            <div class="catalogo-lego">
+              <strong th:text="'Catalogo Lego'"></strong> 
+              <div class="playset-lista">
+                <ul>
+                  <li><a th:href="@{harrypotter/filtro(id=${1})}" th:text="'Harry Potter'"></a></li>
+                  <li><a href="#" th:text="'Star Wars'"></a></li>
+                  <li><a href="#" th:text="'Lego City'"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+          <ul>
+            <li class="nav">
+              <a class="carr" href="#">
+                <img src="image/cart.png" class="carrello">
+                </a>
+            </li>
+           </ul>
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: solid black;"><strong th:text="'Login'"></strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: solid black;"><strong th:text="'Registrazione'"></strong></a>
+            </li>
+          </ul>      
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4" th:each="art : ${catalogo}">
+            <div class="card"  >
+              <img  th:src="@{${art.immagine}}" class="card-img-top" >
+              <h2 th:text=${art.nome}></h2>
+              <p class="descrizione" th:text=${art.descrizione}></p>
+              <button class="btn btn-success acquista" th:text= "${'Acquista | ' + art.prezzo}"></button>
+              <button class="btn btn-primary dettagli" onclick="mostraDescrizione(this)" th:text="dettagli"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="bg-lightf py-3" id="rosso">
+        <div class="col-md-4 posizione">
+          <p th:text="'&copy; 2023 Catalogo Lego'"></p>
+        </div>
+        <div class="col-md-4 text-center posizione">
+            <a href="#" target="_blank" class="btn" th:text="'Area Riservata'"></a>
+          </div>
+        <div class="col-md-4 text-right posizione">
+          <p th:text="'Contatti: info@catalogolego.it'"></p>
+        </div>
+    </footer>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-5" th:each= "p : ${prodotto}">
-        <div class="card h-100">
-        <!-- https://www.lego.com/cdn/cs/set/assets/blt56b4ec4e20d3d82d/76413_alt1.png -->
-       <!--     <img th:src="@{${p.immagine}} class="card-img-top" alt="Nome dell'immagine">-->  
-          <div class="card-body">
-            <h2 class="card-title" th:text="${p.nome}"><!--   La stanza dei desideri--></h2>
-            <p class="card-text" th:text="${p.descrizione}"><!--  Questo fantastico giocattolo LEGO Castello di Hogwarts è ispirato all'iconica scena di Harry Potter e i Doni della Morte - Parte 2, così puoi ricreare tutti i tuoi momenti preferiti. --> </p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary" th:text="acquista"><!-- Acquista --></button>
-            <span class="price" th:text="${#numbers.formatDecimal(p.prezzo,0,'POINT',2,'COMMA')}"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://lucky-bricks.de/media/image/product/2377/lg/lego-harry-potter-76407-heulende-huette.jpg" class="foto2" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">Capanna ululante</h2>
-            <p class="card-text">Giovani streghe, maghi e babbani possono rievocare alcune scene di Harry Potter e il prigioniero di Azkaban e creare innumerevoli nuove avventure con 6 minifigure leggendarie: Harry Potter, Hermione Granger, Ron Weasley, Sirius Black, Peter Pettigrew e Remus Lupin.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€45,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://image.smythstoys.com/zoom/169928.jpg" class="foto3" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">Castello di Hogwarts</h2>
-            <p class="card-text">Con oltre 6.000 pezzi, il castello di Hogwarts LEGO è dotato di tante torrette dai dettagli autentici, famose ambientazioni e funzioni nascoste per offrire ai fan di Harry Potter un’esperienza di costruzione davvero magica.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€499,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://www.lego.com/cdn/cs/set/assets/blta8b50d2a67f3ee75/75955_alt1.jpg" class="foto4" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">Hogwarts Express</h2>
-            <p class="card-text">Sali a bordo dell'iconico Hogwarts Express alla stazione di King's Cross. La stazione comprende un ponte con orologio al binario 9/4, una parete mobile con ingresso nascosto, poster "Wanted", edizioni del Daily Prophet e un giocattolo ferroviario con 5 posti a sedere ed elementi laterali e tetto rimovibili.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€49,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://brickcoast.de/media/image/product/5497/lg/lego-harry-potter-76411-hausbanner-ravenclaw.jpg" class="foto5" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">Logo - Corvonero</h2>
-            <p class="card-text">Mostra il tuo attaccamento a Corvonero con questo incantevole stendardo della casa. Appenderlo al muro per mostrare a tutti lo stemma di Corvonero, o aprire il modello per scortare Cho Chang, Luna Lovegood e Michael Corner nella sala comune di questa casa a Hogwarts.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€23,75</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://gzhls.at/i/85/50/2538550-l0.jpg" class="foto6" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">La scacchiera di Hogwarts</h2>
-            <p class="card-text">Set di scacchi autentico del magico film, on 32 pezzi costruibili e 4 minifigure: Harry Potter, Hermione Granger, Ron Weasley e un Severus Piton d’oro.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€68,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://www.lego.com/cdn/cs/set/assets/blt56b4ec4e20d3d82d/76413_alt1.png" class="foto7" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">Ungaro spinato</h2>
-            <p class="card-text">Fai volare uno dei draghi più pericolosi mai esistiti nel Mondo magico. Questa riproduzione del leggendario sputafuoco è adatto per streghe, maghi e babbani dai 10 anni in su.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€29,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://www.lego.com/cdn/cs/set/assets/blt50499c2bb38c4f81/40452_alt1.jpg" class="foto8" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">I dormitori di Grifondoro</h2>
-            <p class="card-text">Harry e Ron nel dormitorio dei Grifondoro con 2 letti e accessori magici. Include anche 4 tessere a sorpresa delle carte dei maghi e una piattaforma di esposizione da 16 carte per ampliare la collezione.</p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€19,99</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img src="https://i.otto.de/i/otto/289190e9-5579-55fa-986a-664adeaa4112/lego-konstruktionsspielsteine-lego-harry-pottertm-hagrids-huette-seidenschnabe-set-496-st.jpg?$formatz$" class="foto9" alt="Nome dell'immagine">
-          <div class="card-body">
-            <h2 class="card-title">La capanna di Hagrid</h2>
-            <p class="card-text">Questo fantastico gioco per i bambini offre ai fan di Harry Potter dagli 8 anni in su infinite opportunità di gioco di fantasia. I bambini potranno esplorare l'interno dettagliato della capanna di Hagrid, nascondersi dietro le zucche di Hagrid quando il Ministro della Magia e il boia arrivano, quindi salvare l’ippogrifo Fierobecco dall’ascia del boia. </p>
-          </div>
-          <div class="card-footer">
-            <button type="button" class="btn btn-primary">Acquista</button>
-            <span class="price">€59,99</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p>&copy; 2021 Prodotti da acquistare</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

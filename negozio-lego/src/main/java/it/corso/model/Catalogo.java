@@ -42,7 +42,7 @@ public class Catalogo {
 	)
 	private List<Ordine> ordini = new ArrayList<>();
 	
-	@ManyToOne(cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade =  CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_categoria", referencedColumnName = "id")
 	private Categoria categoria;
 

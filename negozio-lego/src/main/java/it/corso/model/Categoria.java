@@ -27,7 +27,7 @@ public class Categoria {
 	@OneToMany
 	(
 			mappedBy = "categoria",
-			cascade = CascadeType.ALL,
+			cascade = CascadeType.REFRESH,
 			fetch = FetchType.EAGER,
 			orphanRemoval = true 
 	)
