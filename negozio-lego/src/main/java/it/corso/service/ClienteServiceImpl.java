@@ -15,8 +15,24 @@ public class ClienteServiceImpl implements ClienteService {
 	@Autowired
 	private ClienteDao clienteDao;
 	
+
+	
 	@Override
-	public void registraCliente(Cliente cliente) {
+	public void registraCliente(String nome, String cognome, String indirizzo, String cap, String localita, String provincia, String telefono_cellulare, String codice_fiscale, String email) {
+		
+		//Si possono migliore con controlli per l'inserimento
+		Cliente cliente = new Cliente();
+		if (nome.length() <101) cliente.setNome(nome);
+		if (cognome.length() <101)  cliente.setCognome(cognome);
+		if (indirizzo.length() <101) cliente.setIndirizzo(indirizzo);
+		if (cap.length() < 6) cliente.setCap(cap);
+		if (localita.length() < 51) cliente.setLocalita(localita);
+		if (provincia.length() <3) cliente.setProvincia(provincia);
+		if (telefono_cellulare.length() < 31) cliente.setTelefono_cellulare(telefono_cellulare);
+		if (codice_fiscale.length() < 17) cliente.setCodice_fiscale(codice_fiscale);
+		if (email.length() < 51) cliente.setEmail(email);
+		
+		
 		clienteDao.save(cliente);
 
 	}

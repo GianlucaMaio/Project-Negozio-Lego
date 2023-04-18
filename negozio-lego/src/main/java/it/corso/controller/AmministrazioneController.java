@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Cliente;
 import it.corso.model.Ordine;
-import it.corso.service.AmministratoreService;
 import it.corso.service.ClienteService;
 import it.corso.service.OrdineService;
 
@@ -19,9 +18,6 @@ import it.corso.service.OrdineService;
 @Controller
 @RequestMapping("/amministrazione")
 public class AmministrazioneController {
-
-	 @Autowired
-	 private AmministratoreService amministratoreService;
 	 
 	 @Autowired
 	 private ClienteService clienteService;

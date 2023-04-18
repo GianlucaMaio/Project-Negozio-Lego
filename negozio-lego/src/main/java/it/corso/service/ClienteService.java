@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpSession;
 
 public interface ClienteService {
 
-	void registraCliente(Cliente cliente);
+	void registraCliente(String nome, String cognome, String indirizzo, String cap, String localita, String provincia, String telefono_cellulare, String codice_fiscale, String email);
 	Cliente getClienteById(int id);
 	List<Cliente> getClienti();
 	void cancellaCliente(Cliente cliente);

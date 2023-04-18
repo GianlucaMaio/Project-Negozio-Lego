@@ -17,12 +17,12 @@ public class AmministatoreServiceImpl implements AmministratoreService {
 	@Override
 	public boolean controlloLogin(String username, String password, HttpSession session) {
 		
-		Amministratore amministratore = amministratoreDao.findByUsernameAndPassword(username, password);
+		Amministratore admin = amministratoreDao.findByUsernameAndPassword(username, password);
 
 		//controllo login 
-		if(amministratore != null)
+		if(admin != null)
 		{
-			session.setAttribute("amministratore", amministratore); 
+			session.setAttribute("admin", admin); 
 			return true; 
 		}
 		
