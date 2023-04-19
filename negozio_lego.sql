@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 18, 2023 alle 17:52
+-- Creato il: Apr 19, 2023 alle 17:58
 -- Versione del server: 10.4.27-MariaDB
 -- Versione PHP: 8.1.12
 
@@ -104,7 +104,6 @@ CREATE TABLE `clienti` (
   `localita` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `provincia` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `telefono_cellulare` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `codice_fiscale` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_profilo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -113,13 +112,16 @@ CREATE TABLE `clienti` (
 -- Dump dei dati per la tabella `clienti`
 --
 
-INSERT INTO `clienti` (`id`, `nome`, `cognome`, `indirizzo`, `cap`, `localita`, `provincia`, `telefono_cellulare`, `codice_fiscale`, `email`, `id_profilo`) VALUES
-(4, 'nome', 'cognome', 'ind', 'cap', 'località', 'pr', 'tel', 'cod', 'emai@', 3),
-(5, 'Nome', 'Cognome', 'Indirizzo', 'Cap', 'località', 'PR', 'telefono', 'cod', 'emai@', NULL),
-(6, 'jkljl', 'kjljl', 'ljljl', 'lj', 'ljlj', 'l2', 'jjghjg', 'ljlj', 'ljlj', NULL),
-(7, 'nom', 'cog', 'ind', 'ca', 'loc', 'pr', '320', 'cod', 'email@@', NULL),
-(8, 'nomeprovabottone', 'hkjhkk', 'hkkhk', 'hh', 'hh', 'hh', 'hh', 'hh', 'hh', NULL),
-(9, 'klkl', 'lklk', 'kkk', 'kk', 'kk', 'kk', 'kk', 'lklk', 'klkl', NULL);
+INSERT INTO `clienti` (`id`, `nome`, `cognome`, `indirizzo`, `cap`, `localita`, `provincia`, `telefono_cellulare`, `email`, `id_profilo`) VALUES
+(4, 'nome', 'cognome', 'ind', 'cap', 'località', 'pr', 'tel', 'emai@', 3),
+(5, 'Nome', 'Cognome', 'Indirizzo', 'Cap', 'località', 'PR', 'telefono', 'emai@', 0),
+(6, 'jkljl', 'kjljl', 'ljljl', 'lj', 'ljlj', 'l2', 'jjghjg', 'ljlj', 0),
+(7, 'nom', 'cog', 'ind', 'ca', 'loc', 'pr', '320', 'email@@', 0),
+(8, 'nomeprovabottone', 'hkjhkk', 'hkkhk', 'hh', 'hh', 'hh', 'hh', 'hh', 0),
+(9, 'klkl', 'lklk', 'kkk', 'kk', 'kk', 'kk', 'kk', 'klkl', 0),
+(10, 'kjkj', 'kjkj', 'kjkj', '66j', 'jkjk', 'jj', 'hkjhk', 'khkh', NULL),
+(11, 'jklj', 'ljlj', 'ljlj', 'jj', 'ljljlj', 'jj', 'ljjj', 'jj', 4),
+(12, 'kk', 'kk', 'kk', 'kk', 'kk', 'kk', 'kk', 'kk', 5);
 
 -- --------------------------------------------------------
 
@@ -162,7 +164,9 @@ CREATE TABLE `profili` (
 --
 
 INSERT INTO `profili` (`id`, `username`, `password`) VALUES
-(3, 'username', 'password');
+(3, 'username', 'password'),
+(4, 'user', 'pass'),
+(5, 'kk', 'kk');
 
 --
 -- Indici per le tabelle scaricate
@@ -240,7 +244,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT per la tabella `clienti`
 --
 ALTER TABLE `clienti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
@@ -252,7 +256,7 @@ ALTER TABLE `ordini`
 -- AUTO_INCREMENT per la tabella `profili`
 --
 ALTER TABLE `profili`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Limiti per le tabelle scaricate
