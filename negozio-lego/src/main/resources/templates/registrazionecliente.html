@@ -188,7 +188,7 @@
     </nav>
 	<div class="container">
 		<div class="signup-form">
-			<form action="registrazionecliente/salvaprofilo" method="post"> <!--   form per username e password-->
+			<form action="registrazionecliente/salvacliente" method="post"> <!--   form per username e password-->
 				<h2 th:text="'Registrati'"></h2>
 				<p th:text="'Compila tutti i campi per registrarti'"></p>
 				<div class="form-group">
@@ -197,14 +197,8 @@
 				</div>
 				<div class="form-group">
 					<label th:text="'Password'"></label>
-					<input type="text" class="form-control" name="password" required="required">
+					<input type="password" class="form-control" name="password" required="required">
 				</div>
-		<!-- 	<div class="form-group">
-					<label th:text="'Conferma Password'"></label>
-					<input type="text" class="form-control" name="confermapassword" required="required">
-				</div> -->	
-			</form>
-			<form action="registrazionecliente/salvacliente" method="post"> <!--  form per il cliente -->	
 				<div class="form-group">
 					<label th:text="'Nome'"></label>
 					<input type="text" class="form-control" name="nome" required="required">
@@ -234,19 +228,14 @@
 					<input type="text" class="form-control" name="telefono_cellulare" required="required">
 				</div>
 				<div class="form-group">
-					<label th:text="'Codice Fiscale'"></label>
-					<input type="text" class="form-control" name="codice_fiscale" required="required">
-				</div>
-				<div class="form-group">
 					<label th:text="'Email'"></label>
 					<input type="text" class="form-control" name="email" required="required">
 				</div>																																
 				
-				
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary btn-lg" th:text="'Registrati'"></button>
 				</div>
-								<span th:text="'Hai già un account? '"></span><span><a th:href="@{logincliente}" th:text="'Accedi qui'"></a></span>
+				<span th:text="'Hai già un account? '"></span><span><a th:href="@{logincliente}" th:text="'Accedi qui'"></a></span>
 			</form>
 		</div>
 	</div>

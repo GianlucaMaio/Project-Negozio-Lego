@@ -24,7 +24,7 @@ public class RegistrazioneClienteController {
 		return "registrazionecliente";
 	}
 	
-	@PostMapping("salvacliente")
+	@PostMapping("/salvacliente")
 	public String registraCliente(
 			@RequestParam("nome") String nome,
 			@RequestParam("cognome") String cognome,
@@ -33,24 +33,13 @@ public class RegistrazioneClienteController {
 			@RequestParam("localita") String localita,
 			@RequestParam("provincia") String provincia,
 			@RequestParam("telefono_cellulare") String telefono_cellulare,
-			@RequestParam("codice_fiscale") String codice_fiscale,
-			@RequestParam("email") String email
-	//		@RequestParam("id_profilo") int id_profilo
-			) {
-		
-		clienteService.registraCliente(nome, cognome, indirizzo, cap, localita, provincia, telefono_cellulare, codice_fiscale, email);
-		return "redirect:/catalogo"; //da mettere "redirect:/logincliente"
-	}
-	
-	@PostMapping("salvaprofilo")
-	public String registraProfilo(
+			@RequestParam("email") String email,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password,
 			HttpSession session
 			) {
 		
-		clienteService.controlloCreazioneAccount(username, session);
-		return "redirect:/catalogo";
-	}
-	
+		clienteService.registraCliente(nome, cognome, indirizzo, cap, localita, provincia, telefono_cellulare,email, username, password);
+		return "redirect:/logincliente"; //da mettere "redirect:/logincliente"
+	}	
 }

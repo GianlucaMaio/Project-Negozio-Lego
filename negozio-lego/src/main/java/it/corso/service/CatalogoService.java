@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import it.corso.model.Catalogo;
+import jakarta.servlet.http.HttpSession;
 
 
 public interface CatalogoService {
@@ -14,4 +15,5 @@ public interface CatalogoService {
 	List<Catalogo> getProdotti();
 	void cancellaProdotto(Catalogo catalogo);
 	
+	void aggiungiAlCarrello(int id, HttpSession session);
 }

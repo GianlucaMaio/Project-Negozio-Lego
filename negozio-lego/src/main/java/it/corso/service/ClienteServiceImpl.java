@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.corso.dao.ClienteDao;
 import it.corso.model.Cliente;
+import it.corso.model.Profilo;
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -18,20 +19,22 @@ public class ClienteServiceImpl implements ClienteService {
 
 	
 	@Override
-	public void registraCliente(String nome, String cognome, String indirizzo, String cap, String localita, String provincia, String telefono_cellulare, String codice_fiscale, String email) {
+	public void registraCliente(String nome, String cognome, String indirizzo, String cap, String localita, String provincia, String telefono_cellulare, String email, String username, String password) {
 		
 		//Si possono migliore con controlli per l'inserimento
+		Profilo profilo = new Profilo();
+		profilo.setUsername(username);
+		profilo.setPassword(password);
 		Cliente cliente = new Cliente();
-		if (nome.length() <101) cliente.setNome(nome);
-		if (cognome.length() <101)  cliente.setCognome(cognome);
-		if (indirizzo.length() <101) cliente.setIndirizzo(indirizzo);
-		if (cap.length() < 6) cliente.setCap(cap);
-		if (localita.length() < 51) cliente.setLocalita(localita);
-		if (provincia.length() <3) cliente.setProvincia(provincia);
-		if (telefono_cellulare.length() < 31) cliente.setTelefono_cellulare(telefono_cellulare);
-		if (codice_fiscale.length() < 17) cliente.setCodice_fiscale(codice_fiscale);
-		if (email.length() < 51) cliente.setEmail(email);
-		
+		cliente.setNome(nome);
+		cliente.setCognome(cognome);
+		cliente.setIndirizzo(indirizzo);
+		cliente.setCap(cap);
+		cliente.setLocalita(localita);
+		cliente.setProvincia(provincia);
+		cliente.setTelefono_cellulare(telefono_cellulare);
+		cliente.setEmail(email);
+		cliente.setProfilo(profilo);
 		
 		clienteDao.save(cliente);
 

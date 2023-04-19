@@ -36,8 +36,6 @@ public class Cliente {
 	private String provincia;
 	@Column(name ="telefono_cellulare")
 	private String telefono_cellulare;
-	@Column(name ="codice_fiscale")
-	private String codice_fiscale;
 	@Column(name ="email")
 	private String email;
 	
@@ -103,12 +101,6 @@ public class Cliente {
 	}
 	public void setTelefono_cellulare(String telefono_cellulare) {
 		this.telefono_cellulare = telefono_cellulare;
-	}
-	public String getCodice_fiscale() {
-		return codice_fiscale;
-	}
-	public void setCodice_fiscale(String codice_fiscale) {
-		this.codice_fiscale = codice_fiscale;
 	}
 	public String getEmail() {
 		return email;

@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.corso.model.Catalogo;
 import it.corso.service.CatalogoService;
+import jakarta.servlet.http.HttpSession;
 
 
-//localhost:8051/harrypotter
+//localhost:8051/catalogo
 @Controller
 @RequestMapping("/catalogo")
 public class CatalogoController {
@@ -33,5 +34,13 @@ public class CatalogoController {
 		model.addAttribute("catalogo", prodotto); 
 		
 		return "catalogo";
+	}
+	
+	@GetMapping("/aggiungi")
+	public String aggiungi(@RequestParam("id") int id, HttpSession session) {
+		
+		catalogoService.aggiungiAlCarrello(id, session);
+		
+		return "redirect:/catalogo";
 	}
 }

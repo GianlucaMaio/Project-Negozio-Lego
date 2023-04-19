@@ -27,19 +27,13 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="catalogo-lego">
-            <div class="catalogo-lego">
-              <strong th:text="'Catalogo Lego'"></strong> 
-              <div class="playset-lista">
-                <ul>
-                  <li><a th:href="@{catalogo(id=${1})}" th:text="'Harry Potter'"></a></li>
-                  <li><a th:href="@{catalogo(id=${2})}" th:text="'Star Wars'"></a></li>
-                  <li><a th:href="@{catalogo(id=${3})}" th:text="'Lego City'"></a></li>
-                  <li><a th:href="@{catalogo}" th:text="'Tutti'"></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <div id="catalogo" class="catalogo-lego">
+              <strong class="titolo" th:text="'Catalogo'"></strong> 
+              <a th:href="@{catalogo(id=${1})}" th:text="'Harry Potter'"></a> 
+              <a th:href="@{catalogo(id=${2})}" th:text="'Star Wars'"></a> 
+              <a th:href="@{catalogo(id=${3})}" th:text="'Lego City'"></a> 
+              <a th:href="@{catalogo}" th:text="'Tutti i playset'"></a>
+          </div>   
           <div>
           <ul>
             <li class="nav">
@@ -66,7 +60,7 @@
               <img  th:src="@{${art.immagine}}" class="card-img-top" >
               <h2 th:text=${art.nome}></h2>
               <p class="descrizione" th:text=${art.descrizione}></p>
-              <button class="btn btn-success acquista" th:text= "${'Acquista | ' + art.prezzo}"></button>
+              <a class="btn btn-success acquista" th:href="@{catalogo/aggiungi(id=${art.id})}" th:text= "${'Aggiungi al carello | ' + art.prezzo + ' €'}"></a>
               <button class="btn btn-primary dettagli" onclick="mostraDescrizione(this)" th:text="dettagli"></button>
             </div>
           </div>
