@@ -24,32 +24,23 @@ public class OrdineServiceImp implements OrdineService {
 	private CatalogoService catalogoService;
 	
 	@Override
-	public void registraOrdine(Ordine ordine, String data, int idCliente, int[] idProdotti) {
+	public void registraOrdine(List<Catalogo> carrello,double totale, int idCliente) {
 
-		
-		try {
-			LocalDate dataOrdine = LocalDate.parse(data);
-			ordine.setData(dataOrdine);
-		} catch (Exception e) {
-			ordine.setData(LocalDate.now()); 
-		}
+		Ordine ordine = new Ordine();
+		ordine.setData(LocalDate.now()); 
 		
 		Cliente cliente = clienteService.getClienteById(idCliente);
 		ordine.setCliente(cliente);
 		
+		ordine.setImporto(totale);
 		
 		ordine.getCatalogo().clear();
-		for(int idProdotto : idProdotti) {
-			Catalogo catalogo = catalogoService.getProdottoById(idProdotto);
+		
+		for (Catalogo c: carrello) {
+			Catalogo catalogo = catalogoService.getProdottoById(c.getId());
 			ordine.getCatalogo().add(catalogo);
 		}
-		
-		double importo = 0;
-		for (Catalogo c: ordine.getCatalogo())
-			importo += c.getPrezzo();
-		ordine.setImporto(importo);
 		ordineDao.save(ordine);	
-
 	}
 
 	@Override

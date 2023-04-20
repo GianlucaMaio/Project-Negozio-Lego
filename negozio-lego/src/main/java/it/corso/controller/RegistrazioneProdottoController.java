@@ -15,6 +15,7 @@ import it.corso.model.Catalogo;
 import it.corso.model.Categoria;
 import it.corso.service.CatalogoService;
 import it.corso.service.CategoriaService;
+import jakarta.servlet.http.HttpSession;
 
 //localhost:8051/gestioneprodotto
 @Controller
@@ -28,12 +29,15 @@ public class RegistrazioneProdottoController {
 	private CategoriaService categoriaService;
 	
 	@GetMapping
-	public String getPage(Model model) {
+	public String getPage(HttpSession session, Model model) {
+		
+		if(session.getAttribute("admin") == null)
+			return "redirect:/loginareariservata";
 		
 		List<Catalogo> catalogo =catalogoService.getProdotti();
 		Catalogo prodotto = new Catalogo();
 		List<Categoria> categorie = categoriaService.getCategoria();
-		Categoria categoria = new Categoria(); // serve?	
+		Categoria categoria = new Categoria();	
 	    model.addAttribute("catalogo", catalogo);
 		model.addAttribute("prodotto", prodotto);
 		model.addAttribute("categoria", categoria);

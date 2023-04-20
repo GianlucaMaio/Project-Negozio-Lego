@@ -19,7 +19,10 @@ public class RegistrazioneClienteController {
 	private ClienteService clienteService;
 	
 	@GetMapping
-	public String getPage() {
+	public String getPage(HttpSession session) {
+		
+		if(session.getAttribute("admin") == null)
+			return "redirect:/loginareariservata";
 		
 		return "registrazionecliente";
 	}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.corso.model.Catalogo;
 import it.corso.model.Cliente;
 import it.corso.service.ClienteService;
+import it.corso.service.OrdineService;
 import jakarta.servlet.http.HttpSession;
 
 //localhost:8051/pagamento
@@ -25,18 +26,41 @@ public class PagamentoController {
 	@Autowired
 	private ClienteService clienteService;
 	
-/*	@SuppressWarnings("unchecked")
+	@Autowired
+	private OrdineService ordineService;
+	
+	private Cliente cliente;
+	private List<Catalogo> carrello;
+	private double totale;
+	
+	@SuppressWarnings("unchecked")
 	@GetMapping
 	public String getPage(HttpSession session, Model model) {
 		
-		List<Catalogo> carrello = session.getAttribute("carrello") == null ? new ArrayList<>() : (List<Catalogo>) session.getAttribute("carrello");
-		double totale = carrello.stream().mapToDouble(p->p.getPrezzo()).reduce(0, (p1,p2)->p1+p2);
+		if (session.getAttribute("cliente") == null) 
+			return "redirect:/logincliente";
+		
+		cliente = (Cliente) session.getAttribute("cliente");
+		carrello = session.getAttribute("carrello") == null ? new ArrayList<>() : (List<Catalogo>) session.getAttribute("carrello");
+		totale = carrello.stream().mapToDouble(p->p.getPrezzo()).reduce(0, (p1,p2)->p1+p2);
 		model.addAttribute("totale", totale);
 		model.addAttribute("carrello", carrello);
+		model.addAttribute("cliente", cliente);
 		
 		return "pagamento";
-	}*/
-	@SuppressWarnings("unchecked")
+	}
+	
+	@GetMapping("/conferma")
+	public String confermaOrdine(HttpSession session) {
+	
+		ordineService.registraOrdine(carrello, totale, cliente.getId());
+		session.removeAttribute("carrello");
+		
+		return "redirect:/pagamento";
+	}
+	
+	
+/*	@SuppressWarnings("unchecked")
 	@GetMapping
 	public String getPage(HttpSession session, Model model,
 			@PathVariable int id, 
@@ -56,7 +80,7 @@ public class PagamentoController {
 		 
 		 model.addAttribute("cliente", cliente);
 		return "pagamento";
-	}
+	}*/
 /*	 @GetMapping
 	    public String getCliente(@PathVariable int id, 
 	    		@RequestParam("indirizzo") String indirizzo,

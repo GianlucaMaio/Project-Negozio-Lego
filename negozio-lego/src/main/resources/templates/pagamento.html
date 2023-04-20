@@ -47,22 +47,22 @@
     <div class="row">
       <div class="col-md-6">
         <h3 th:text="'Dati di Spedizione'"></h3>
-        <form action="pagamento/cliente/{id}">
+        <form action="">
           <div class="form-group">
             <label for="indirizzo" th:text="'Indirizzo'"></label>
-            <input type="text" class="form-control" name="indirizzo" id="indirizzo" placeholder="Inserisci il tuo indirizzo"  >
+            <input type="text" class="form-control" name="indirizzo" id="indirizzo" th:value="${cliente.indirizzo}" readonly>
           </div>
           <div class="form-group">
             <label for="citta" th:text="'Località'"></label>
-            <input type="text" class="form-control" name="localita" id="citta" placeholder="Inserisci la tua città">
+            <input type="text" class="form-control" name="localita" id="localita" th:value="${cliente.localita}" readonly>
           </div>
           <div class="form-group">
             <label for="provincia" th:text="'Provincia'"></label>
-            <input type="text" class="form-control" name="provincia" id="provincia" placeholder="Inserisci la tua provincia">
+            <input type="text" class="form-control" name="provincia" id="provincia" th:value="${cliente.provincia}" readonly>
           </div>
           <div class="form-group">
             <label for="cap" th:text="'CAP'"></label>
-            <input type="text" class="form-control" name="cap" id="cap" placeholder="Inserisci il tuo CAP">
+            <input type="text" class="form-control" name="cap" id="cap" th:value="${cliente.cap}" readonly>
           </div>
         </form>
         <button type="button" class="btn btn-primaryc" data-toggle="collapse" data-target="#metodo-pagamento"><strong th:text="'Seleziona Metodo di Pagamento'"></strong></button>
@@ -111,7 +111,7 @@
         </table>
         <h4 th:text="'Totale € ' + ${totale}"></h4>
         <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-block" th:text="'Acquista'"></button>
+            <a  class="btn btn-primary btn-block" th:text="'Acquista'" th:href="@{pagamento/conferma}"></a>
         </div>
       </div>
     </div>
