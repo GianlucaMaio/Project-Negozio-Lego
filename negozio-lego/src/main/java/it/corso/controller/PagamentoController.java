@@ -56,7 +56,7 @@ public class PagamentoController {
 		ordineService.registraOrdine(carrello, totale, cliente.getId());
 		session.removeAttribute("carrello");
 		
-		return "redirect:/pagamento";
+		return "redirect:/pagamento"; 
 	}
 	
 	

@@ -112,10 +112,6 @@
   width: 60%;
 }
 
-#carrello {
-  width: 10%;
-  margin-left: 1%;
-}
 
 .nav-item {
   border-top: 6px dashed black;
@@ -134,21 +130,30 @@
   margin-right: 0px;
 }
 
+.area{
+  margin-top: -4px;
+  text-decoration: none;
+  color: black;
+ }
 .navbar-collapse {
   width: 50%;
 }
 
-@media screen and (max-width:1700px) {
+@media screen and (max-width:2500px) {
 
-  .logo {
-      height: 160px;
-      width: auto;
-    }
-    
+.logo {
+  height: 100px;
+  width: auto;
+}
+
   .navbar-nav {
       margin-left: 30%;
       width: 20%;
   }
+
+.carrellodiv{
+ 	margin-right: -104px; 
+ }
     
   .btn-primary{
       background-color: red;
@@ -224,6 +229,26 @@
  .posizione{
     float: left;
  }
+ 
+ 
+  .titolo {
+      font-size: 20px;
+      color: white;
+      margin: 2%;
+  }
+
+	  .catalogo-lego a {
+      width: 60%;
+      color: white;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 1%;
+  }
+  
+    .catalogo-lego {
+      width: 100%;
+  }
+  
 
  .social{
   width: 50px;
@@ -241,6 +266,18 @@
   text-decoration: none;
   color: black;
  }
+
+#batman {
+	width: 1800px;
+	height: 850px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.batmanimg {
+	width: 1800px;
+	height: 850px;
+}
 
  @media screen and (max-width: 900px){ 
   .nav-item {

@@ -98,19 +98,19 @@
     margin-left: 300%;
 }
 
-.titolo {
-    font-size: 30px;
-    color: white;
-    margin: 5%;
-}
+  .titolo {
+      font-size: 20px;
+      color: white;
+      margin: 2%;
+  }
 
-.catalogo-lego a {
-    width: 50%;
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-    padding: 2%;
-}
+  .catalogo-lego a {
+      width: 60%;
+      color: white;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 1%;
+  }
 
 .catalogo-lego {
     width: 60%;
@@ -157,8 +157,12 @@
   margin-top: 7px;
   margin-right: 12px;
  }
-
-
+ 
+.area{
+  margin-top: -4px;
+  text-decoration: none;
+  color: black;
+ }
 
  @media screen and (max-width: 900px){ 
   .nav-item {
@@ -177,17 +181,17 @@
 <body th:style="'background-image:url(' + @{/image/sfondologin.png} + ');'">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light1 fixed-top">
         <a href="#">
-        <img class="logo" src="image/logo.png" href="#"></a>
+        <img class="logo" src="image/logo.png" th:href="@{homepage}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div id="catalogo" class="catalogo-lego">
               <strong class="titolo" th:text="'Catalogo'"></strong> 
-              <a href="#" th:text="'Harry Potter'"></a> 
-              <a href="#" th:text="'Star Wars'"></a> 
-              <a href="#" th:text="'Lego City'"></a> 
-              <a href="#" th:text="'Tutti i playset'"></a>
+              <a th:href="@{catalogo(id=${1})}" th:text="'Harry Potter'"></a> 
+              <a th:href="@{catalogo(id=${2})}" th:text="'Star Wars'"></a> 
+              <a th:href="@{catalogo(id=${3})}" th:text="'Lego City'"></a> 
+              <a th:href="@{catalogo}" th:text="'Tutti i playset'"></a>
           </div>              
         </div>
     </nav>
@@ -210,6 +214,7 @@
 			</form>
 		</div>
 	</div>
+	<br>
 	<!-- Footer -->
 	<footer class="bg-lightf py-3" id="rosso">
 		<div class="col-md-4 posizione">
@@ -231,7 +236,9 @@
 		  </script>
 		</div>
 		<div class="col-md-4 text-center posizione">
-			<a href="#" target="_blank" class="btn" th:text="'Area Riservata'"></a>
+			<a th:href="@{loginareariservata}"  class="area" th:text="'Area Riservata'"></a>
+			<br><br>
+        	<p th:text="'Informativa sulla privacy'"></p>
 		  </div>
 		<div class="col-md-4 text-right posizione">
 		  <p th:text="'Contatti: info@catalogolego.it'"></p>

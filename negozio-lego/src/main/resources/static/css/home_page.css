@@ -1,5 +1,24 @@
 /* Custom CSS */
 
+#banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #f2f2f2;
+      padding: 20px;
+      display: none;
+      text-align: center;
+      z-index: 99;
+    }
+    #banner p {
+      text-align: center;
+    }
+    
+    #banner button {
+      text-align: center;
+    }
+
 .logo {
   height: 100px;
   width: auto;
@@ -68,6 +87,12 @@
 .navbar-collapse {
   width: 50%;
 }
+
+  .area{
+  margin-top: -4px;
+  text-decoration: none;
+  color: black;
+ }
 
 @media screen and (max-width:2500px) {
 
@@ -255,6 +280,10 @@
 
  .btn a{
   text-decoration: none;
+ }
+ 
+ .carrellodiv{
+ 	margin-right: -104px; 
  }
 
  @media screen and (max-width: 900px){ 

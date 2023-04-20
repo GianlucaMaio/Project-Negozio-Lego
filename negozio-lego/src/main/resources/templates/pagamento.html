@@ -11,35 +11,28 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light1 fixed-top">
-    <a href="#">
-    <img class="logo" src="image/logo.png" href="#"></a>
+    <a th:href="@{homepage}">
+    <img class="logo" src="image/logo.png" ></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="catalogo-lego">
-        <div class="catalogo-lego">
-          <strong class="titolo" th:text="'Catalogo'"></strong> 
-          <a href="#" th:text="'Harry Potter'"></a> 
-          <a href="#" th:text="'Star Wars'"></a> 
-          <a href="#" th:text="'Lego City'"></a> 
-          <a href="#" th:text="'Tutti i playset'"></a>
-        </div>
+          <div id="catalogo" class="catalogo-lego">
+              <strong class="titolo" th:text="'Catalogo'"></strong> 
+              <a th:href="@{catalogo(id=${1})}" th:text="'Harry Potter'"></a> 
+              <a th:href="@{catalogo(id=${2})}" th:text="'Star Wars'"></a> 
+              <a th:href="@{catalogo(id=${3})}" th:text="'Lego City'"></a> 
+              <a th:href="@{catalogo}" th:text="'Tutti i playset'"></a>
+          </div> 
       </div>
-      <div>
-        <li class="nav">
-          <a class="carr" href="#">
-            <img src="image/cart.png" class="carrello">
-            </a>
-        </li>
+      <div class="carrellodiv">
+         <a class="carr" th:href="@{carrello}">
+            <img src="image/cart.png" class="carrello" >
+         </a>   
       </div>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color: solid black;"><strong th:text="'Login'"></strong></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color: solid black;"><strong th:text="'Registrazione'"></strong></a>
-        </li>
+
       </ul>      
     </div>
 </nav>
@@ -136,7 +129,9 @@
       </script>
     </div>
     <div class="col-md-4 text-center posizione">
-        <a href="#" target="_blank" class="btn" th:text="'Area Riservata'"></a>
+        <a th:href="@{loginareariservata}"  class="area" th:text="'Area Riservata'"></a>
+      	 <br><br>
+        <p th:text="'Informativa sulla privacy'"></p>
       </div>
     <div class="col-md-4 text-right posizione">
       <p th:text="'Contatti: info@catalogolego.it'"></p>

@@ -24,7 +24,7 @@ public class LoginClienteController {
 			Model model,
 			HttpSession session) {
 		if (session.getAttribute("cliente") !=null) //se l'ogetto utente è diverso da null (cioè se esiste)} allora quindi quando clicchi va li e cambia subito pagina andando a redirect:/reserved 
-			return "redirect:/catalogo";
+			return "redirect:/homepage";
 		
 		
 		model.addAttribute("logError", logError != null); //true oppure false
@@ -40,7 +40,7 @@ public class LoginClienteController {
 		if (!clienteService.controlloLogin(username, password, session))
 			return "redirect:/logincliente?le"; // in questo modo se da errore mi indicare di reinseire i dati segnandomi i campi sbagliati
 		
-		return "redirect:/catalogo";
+		return "redirect:/homepage";
 	}
 	
 }
