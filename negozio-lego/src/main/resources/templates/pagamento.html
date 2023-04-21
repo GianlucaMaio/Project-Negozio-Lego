@@ -98,11 +98,11 @@
           <tbody>
             <tr th:each="art: ${carrello}">
               <td th:text="${art.nome}"></td>
-              <td th:text="'€ ' + ${art.prezzo}"></td>
+              <td th:text="'€ ' + ${#numbers.formatDecimal(art.prezzo,0,'POINT',2,'COMMA')}"></td>
             </tr>
           </tbody>
         </table>
-        <h4 th:text="'Totale € ' + ${totale}"></h4>
+        <h4 th:text="'Totale: € ' + ${#numbers.formatDecimal(totale,0,'POINT',2,'COMMA')}"></h4>
         <div class="col-md-6">
             <a  class="btn btn-primary btn-block" th:text="'Acquista'" th:href="@{pagamento/conferma}"></a>
         </div>

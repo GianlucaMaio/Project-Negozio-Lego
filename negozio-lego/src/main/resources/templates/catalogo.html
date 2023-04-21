@@ -58,7 +58,7 @@
               <img  th:src="@{${art.immagine}}" class="card-img-top" >
               <h2 th:text=${art.nome}></h2>
               <p class="descrizione" th:text=${art.descrizione}></p>
-              <a class="btn btn-success acquista" th:href="@{catalogo/aggiungi(id=${art.id})}" th:text= "${'Aggiungi al carello | ' + art.prezzo + ' €'}"></a>
+              <a class="btn btn-success acquista" th:href="@{catalogo/aggiungi(id=${art.id})}" th:text="'Aggiungi al carello |  € ' + ${#numbers.formatDecimal(art.prezzo,0,'POINT',2,'COMMA')}" ></a>
               <button class="btn btn-primary dettagli" onclick="mostraDescrizione(this)" th:text="dettagli"></button>
             </div>
           </div>

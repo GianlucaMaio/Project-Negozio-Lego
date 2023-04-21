@@ -7,11 +7,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/carrello.css">
 </head>
+<body th:if="${totale <= 0}" th:style="'background-image:url(' + @{/image/starwars.jpg} + ');'">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
 <body>
-	<div th:if="${totale <= 0}" id="batman">
-	<br><br><br><br><br>
-	  <img class="batmanimg" src="image/batmanpagamento2.jpg">
-	</div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light1 fixed-top">
 		<a th:href="@{homepage}">
 		<img class="logo" src="image/logo.png" ></a>
@@ -27,11 +26,6 @@
               <a th:href="@{catalogo}" th:text="'Tutti i playset'"></a>
           </div>
 		  <div>
-		  <ul>
-			<li class="nav">
-
-			</li>
-		 </ul>
 		  </div>
 		  <ul class="navbar-nav">
 			<li class="nav-item">
@@ -61,7 +55,7 @@
 									<input type="number" class="form-control" value="1">
 									<button type="button" class="btn btn-success" onclick="addItem(this)">+</button>
 								</div>
-								<h5 class="subtotal" th:text="'€ ' + ${art.prezzo}"></h5>
+								<h5 class="subtotal" th:text="'€ ' + ${#numbers.formatDecimal(art.prezzo,0,'POINT',2,'COMMA')}"></h5>
                                 
                                     <a type="button" class="btn btn-danger btn-sm" th:text="'Elimina'" th:href="@{carrello/elimina(id=${art.id})}"></a>
                                 
@@ -76,7 +70,7 @@
 				<h2 th:text="'Riepilogo ordine'"></h2> <!-- creare il ciclo per gli articolo aggiunti -->
 				<div class="order-summary-item" th:each="art: ${carrello}">
 					<span th:text="${art.nome}"> </span>
-					<span th:text="'€ ' + ${art.prezzo}"></span>    
+					<span th:text="'€ ' + ${#numbers.formatDecimal(art.prezzo,0,'POINT',2,'COMMA')}"></span>    
 				</div>
 				<div class="order-summary-item">
 					<span th:text="'Spese di spedizione'"></span>
@@ -84,7 +78,7 @@
 				</div>
 				<div class="order-summary-total">
 					<span th:text="'Totale'"></span>
-					<span th:text="'€ ' + ${totale}"></span>
+					<span th:text="'€ ' + ${#numbers.formatDecimal(totale,0,'POINT',2,'COMMA')}"></span>
 				</div>
 				<a type="button" class="btn btn-primary btn-block mt-3" style="background-color:red" th:text="'Procedi al pagamento'" th:href="@{/pagamento}"></a>
 			</div>
@@ -95,13 +89,13 @@
 			if (input.value > 0) {
 				input.stepDown();
 			}
-			updateOrderSummary();
+	//		updateOrderSummary();
 		}
 
 		function addItem(btn) {
 			var input = btn.parentNode.querySelector('input[type="number"]');
 			input.stepUp();
-			updateOrderSummary();
+	//		updateOrderSummary();
 		}
 
 		function updateOrderSummary() {
@@ -132,7 +126,7 @@
 		}
 	</script>
     
-	<footer class="bg-lightf py-3" id="rosso">
+	<footer class="bg-lightf py-3 " id="rosso">
 		<div class="col-md-4 posizione">
 		  <p th:text="'&copy; 2023 Catalogo Lego'"></p>
 		  <p><strong th:text="'ISCRIVITI ALLA NOSTRA NEWSLETTER'"></strong></p>

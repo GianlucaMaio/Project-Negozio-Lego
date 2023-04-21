@@ -1,6 +1,7 @@
 
 .row {
   margin-bottom: 20px;
+ 
 }
 .card {
   margin-right: 20px;
@@ -10,6 +11,12 @@
   height: 200px;
   object-fit: contain;
 }
+  .card img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
 .card-body {
   padding: 10px;
 }
@@ -267,17 +274,9 @@
   color: black;
  }
 
-#batman {
-	width: 1800px;
-	height: 850px;
-	margin-left: auto;
-	margin-right: auto;
-}
 
-.batmanimg {
-	width: 1800px;
-	height: 850px;
-}
+
+
 
  @media screen and (max-width: 900px){ 
   .nav-item {

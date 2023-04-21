@@ -61,9 +61,9 @@
     #menu li:hover > ul {
     display: block;
     color: white;
-    
-  
     }
+    
+
   </style>
 </head>
 <body>
@@ -142,18 +142,15 @@
             <tr>              
               <th th:text="'Codice'"></th>
               <th th:text="'Nome'"></th>
-              <th th:text="'Descrizione'"></th>
               <th th:text="'Prezzo'"></th>
               <th th:text="'Immagine'"></th>
               <th th:text="'Categoria'"></th>
-              <th></th>
             </tr>
           </thead>
           <tbody><!--  Ciclo per mostra i prodotti -->
 			<tr th:each="c : ${catalogo}" >
 				<td th:text="${c.id}"></td>
 				<td th:text="${c.nome}"></td>
-				<td th:text="${c.descrizione}"></td>
 				<td th:text="${#numbers.formatDecimal(c.prezzo,0,'POINT',2,'COMMA')}"></td>
 				<td>
 					<img th:if="${c.immagine == null}" th:src="@{image/logo.png}" class="img-thumbnail" alt="articolo" 

@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import it.corso.model.Catalogo;
 import it.corso.model.Cliente;
-import it.corso.service.ClienteService;
 import it.corso.service.OrdineService;
 import jakarta.servlet.http.HttpSession;
 
@@ -23,8 +21,7 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/pagamento")
 public class PagamentoController {
 
-	@Autowired
-	private ClienteService clienteService;
+
 	
 	@Autowired
 	private OrdineService ordineService;
@@ -56,7 +53,7 @@ public class PagamentoController {
 		ordineService.registraOrdine(carrello, totale, cliente.getId());
 		session.removeAttribute("carrello");
 		
-		return "redirect:/pagamento"; 
+		return "redirect:/acquistocompletato"; 
 	}
 	
 	

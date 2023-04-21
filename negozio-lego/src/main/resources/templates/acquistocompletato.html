@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title th:text="'Login LEGO'"></title>
+	<title th:text="'Acquisto Completato'"></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -178,7 +178,8 @@
 
 	</style>
 </head>
-<body th:style="'background-image:url(' + @{/image/sfondologin.png} + ');'">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<body th:style="'background-image:url(' + @{/image/batmanpagamento2.jpg} + ');'">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light1 fixed-top">
         <a th:href="@{homepage}">
         <img class="logo" src="image/logo.png" ></a>
@@ -196,25 +197,9 @@
         </div>
     </nav>
 	<div class="container">
-		<div class="login-form">
-			<form action="logincliente" method="post">
-				<h2 th:text="'Accedi'"></h2>
-				<div class="form-group">
-					<label th:text="'Username'"></label>
-					<input type="text" class="form-control" name="username" required="required">
-				</div>
-				<div class="form-group">
-					<label th:text="'Password'"></label>
-					<input type="password" class="form-control" name="password" required="required">
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-lg" th:text="'Accedi'"></button>
-				</div>
-				<span th:text="'Non hai ancora un account? '"></span><span><a th:href="@{registrazionecliente}" th:text="'Registrati qui'"></a></span>
-			</form>
-		</div>
+	
 	</div>
-	<br>
+
 	<!-- Footer -->
 	<footer class="bg-lightf py-3" id="rosso">
 		<div class="col-md-4 posizione">
