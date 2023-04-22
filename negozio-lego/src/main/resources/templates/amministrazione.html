@@ -125,7 +125,7 @@
               <td th:text=${o.id}></td>
               <td th:text="${o.cliente.nome + ' ' + o.cliente.cognome}"></td>
               <td th:text=${o.data}></td>
-              <td th:text=${o.importo}></td> 
+              <td th:text="${#numbers.formatDecimal(o.importo,0,'POINT',2,'COMMA')}"></td> 
               <td>
                 <a th:href="@{amministrazione/cancellaordine(id=${o.id})}" 
 					class="btn btn-danger btn-sm" th:text="'Cancella'">

@@ -91,6 +91,7 @@ body {
     height: auto;
     object-fit: cover;
     object-position: center;
+    
   }
   
   .card h2 {
@@ -235,6 +236,7 @@ body {
   text-decoration: none;
   color: black;
  }
+
 
  @media screen and (max-width: 900px){ 
   .nav-item {
